@@ -1,25 +1,19 @@
+#include <unistd.h>
 #include <stdlib.h>
 
-int *ft_range(int start, int end)
+int     *ft_range(int start, int end)
 {
+
+	int size =  abs(end-start) + 1;
+	int *arr = (int *)malloc(size * sizeof(int));;
 	int i = 0;
-	int len = abs((end - start)) + 1;
-	int *res = (int *)malloc(sizeof(int) * len);
 	
-	while (i < len)
-	{
-		if (start < end)
+	while (i < size)
 		{
-			res[i] = start;
-			start++;
-			i++;
+			if (end > start)
+				arr[i++] = start++;
+			else
+				arr[i++] = start--;
 		}
-		else
-		{
-			res[i] = start;
-			start--;
-			i++;
-		}
-	}
-        return (res);
+	return(arr);
 }
